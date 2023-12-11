@@ -3,7 +3,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ContactsFromFile {
-    private String contactFile = "src/contacts.txt";
+    private final String contactFile = "src/contacts.txt";
+    String setTextYellow = "\u001B[33m";
+    String turnOffTextYellow = "\u001B[0m";
     
     
     public void getContacts() {
@@ -13,7 +15,7 @@ public class ContactsFromFile {
             while ((txt = reader.readLine()) != null) {
                 builder.append(txt).append("\n");
             }
-            System.out.println(builder);
+            System.out.println(setTextYellow + builder + turnOffTextYellow);
         }catch (IOException e){
             e.printStackTrace();
         }

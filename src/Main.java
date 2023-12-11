@@ -34,52 +34,52 @@ public class Main {
         }
         Scanner s = new Scanner(System.in);
         System.out.println("Välkommen!");
-        System.out.println("För insättnig, tryck 1: ");
-        System.out.println("För uttag, tryck 2: ");
-        System.out.println("För att se saldo, tryck 3");
-        System.out.println("Kontakta oss, tryck 4");
-        System.out.println("För att logga ut, skriv logga ut.");
         while (true) {
-            String userInput = s.nextLine();
-            if (userInput.equals("1")) {
-                f.showBalance();
-                System.out.println("Skriv in belopp att sätta in: ");
-                String input = s.nextLine();
-                try {
-                    double amount = Double.parseDouble(input);
-                    if (amount >= 0) {
-                        f.deposit(amount);
-                    } else {
-                        System.out.println("Belopp måste vara mer än 0");
-                    }
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
-            } else if (userInput.equals("2")) {
-                f.showBalance();
-                System.out.println("Skriv in belopp att ta ut (t.ex -belopp)");
-                String input = s.nextLine();
-                try {
-                    double amount = Double.parseDouble(input);
-                    if (amount < 0) {
-                        f.withdraw(-amount);
-                    } else {
-                        System.out.println("Beloppet måste vara mindre än 0");
-                    }
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                }
-            } else if (userInput.equals("3")) {
-                f.showBalance();
+            System.out.println("1. Insättning\n2. Uttag\n3. Se saldo\n4. Kontakta oss\n5. Logga ut");
+            int userChoice = s.nextInt();
+            s.nextLine();
 
-            } else if (userInput.equals("4")) {
-                c.getContacts();
-
-            } else if (userInput.equalsIgnoreCase("Logga ut")) {
-                System.out.println("Du är nu utloggad");
-                break;
+            switch (userChoice) {
+                case 1:
+                    f.showBalance();
+                    System.out.println("Skriv in belopp att sätta in: ");
+                    double DepositAmount = s.nextDouble();
+                    try {
+                        if (DepositAmount >= 0) {
+                            f.deposit(DepositAmount);
+                        }
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 2:
+                    f.showBalance();
+                    System.out.println("Skriv in belopp att ta ut (t.ex -belopp)");
+                    double withdrawAmount = s.nextDouble();
+                    try {
+                        if (withdrawAmount < 0) {
+                            f.withdraw(-withdrawAmount);
+                        } else {
+                            System.out.println("Beloppet måste vara mindre än 0");
+                        }
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 3:
+                    f.showBalance();
+                    break;
+                case 4:
+                    c.getContacts();
+                    break;
+                case 5:
+                    System.out.println("Du är nu utloggad.");
+                    s.close();
+                    System.exit(0);
+                    break;
             }
         }
+        
     }
 }
 
