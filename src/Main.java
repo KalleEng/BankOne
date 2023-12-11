@@ -38,7 +38,7 @@ public class Main {
         System.out.println("För uttag, tryck 2: ");
         System.out.println("För att se saldo, tryck 3");
         System.out.println("Kontakta oss, tryck 4");
-        System.out.println("För att avsluta, skriv avsluta.");
+        System.out.println("För att logga ut, skriv logga ut.");
         while (true) {
             String userInput = s.nextLine();
             if (userInput.equals("1")) {
@@ -75,7 +75,8 @@ public class Main {
             } else if (userInput.equals("4")) {
                 c.getContacts();
 
-            } else if (userInput.equalsIgnoreCase("Avsluta")) {
+            } else if (userInput.equalsIgnoreCase("Logga ut")) {
+                System.out.println("Du är nu utloggad");
                 break;
             }
         }
