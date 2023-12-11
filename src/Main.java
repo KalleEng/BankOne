@@ -1,8 +1,10 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         LoggaIn l = new LoggaIn();
+        ContactsFromFile c = new ContactsFromFile();
         bliMedlem b = new bliMedlem();
         Functions f = new Functions();
         String personnummer;
@@ -35,6 +37,7 @@ public class Main {
         System.out.println("För insättnig, tryck 1: ");
         System.out.println("För uttag, tryck 2: ");
         System.out.println("För att se saldo, tryck 3");
+        System.out.println("Kontakta oss, tryck 4");
         System.out.println("För att avsluta, skriv avsluta.");
         while (true) {
             String userInput = s.nextLine();
@@ -67,14 +70,15 @@ public class Main {
                     e.printStackTrace();
                 }
             } else if (userInput.equals("3")) {
-                 f.showBalance();
+                f.showBalance();
+
+            } else if (userInput.equals("4")) {
+                c.getContacts();
 
             } else if (userInput.equalsIgnoreCase("Avsluta")) {
                 break;
             }
-            
         }
-        s.close();
     }
 }
 
