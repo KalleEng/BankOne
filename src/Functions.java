@@ -2,7 +2,6 @@ public class Functions {
     private double balance;
     
     
-    
     public Functions(double initialSaldo){
         this.balance = initialSaldo;
     }
@@ -17,7 +16,7 @@ public class Functions {
         System.out.println(amount + " kronor sattes in på ditt konto");
     }
     public void withdraw(double amount){
-        if (amount <= balance){
+        if (balance >= amount){
             balance = (balance - amount);
             System.out.println(amount + " kronor togs ut från ditt konto");
         } else {
